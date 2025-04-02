@@ -4,7 +4,7 @@ using CoordinatesApi.Models.Dtos;
 
 namespace CoordinatesApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("/[controller]")]
 [ApiController]
 public class CoordinatesController(ICoordinatesService coordinatesService) : ControllerBase
 {
