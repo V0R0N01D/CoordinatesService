@@ -5,4 +5,5 @@ namespace CoordinatesApi.Interfaces.Services;
 public interface ICoordinatesService
 {
     IEnumerable<Coordinate> GetCoordinates(int count);
+    DistanceResult CalculateDistance(List<Coordinate>? coordinates);
 }

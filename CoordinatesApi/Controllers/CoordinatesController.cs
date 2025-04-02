@@ -20,8 +20,14 @@ public class CoordinatesController(ICoordinatesService coordinatesService) : Con
     }
 
     [HttpPost]
-    public ActionResult Post([FromBody] IEnumerable<Coordinate> coordinates)
+    public ActionResult<IEnumerable<DistanceResult>> CalculateDistance(
+        [FromBody] List<Coordinate>? coordinates)
     {
-        return StatusCode(501);
+        if (coordinates?
+            .Any(c => Math.Abs(c.Latitude) > 90 || Math.Abs(c.Longitude) > 180) == true)
+            return BadRequest(
+                "The coordinates should be in the range: latitude ±90°, longitude ±180°");
+
+        return Ok(coordinatesService.CalculateDistance(coordinates));
     }
 }

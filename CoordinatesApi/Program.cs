@@ -17,6 +17,8 @@ public class Program
 
 
         builder.Services.AddScoped<ICoordinatesRepository, RandomCoordinatesRepository>();
+        builder.Services.AddScoped<ICoordinatesMathRepository, CoordinatesMathRepository>();
+
         builder.Services.AddScoped<ICoordinatesService, CoordinatesService>();
 
 
